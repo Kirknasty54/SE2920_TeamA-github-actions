@@ -1,0 +1,16 @@
+name: Issue Comment Workflow
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  show-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print issue or PR info
+        run: |
+          echo "Event type: ${{ github.event_name }}"
+          echo "Comment by: ${{ github.actor }}"
+          echo "Issue or PR number: ${{ github.event.issue.number }}"
+          echo "Comment text: ${{ github.event.comment.body }}"
